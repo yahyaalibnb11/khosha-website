@@ -30,4 +30,4 @@ window.BUNDLES=[
  {id:'ghar-starter',name:'Ghar ka Starter',ur:'گھر کا اسٹارٹر',items:['multigrain-atta','changa-manga-haldi','kunri-mirch','sukkur-dhania'],price:1950,note:'Atta aur teen bunyadi masalay. Pehle order ke liye sab se behtar.'},
  {id:'sunnah-box',name:'Sunnah Box',ur:'سنت باکس',items:['talbina','kalonji','jau-atta'],price:1650,note:'Talbina, kalonji aur jau. Ramzan aur roz ke liye.'},
  {id:'fibre-week',name:'Fibre Routine',ur:'فائبر روٹین',items:['fibre-atta','alsi','isabgol','jau-whole'],price:1700,note:'Diet mein fibre barhane walon ke liye ek mahine ka set.'}];
-window.SHOP={whatsapp:'923000000000',freeShip:2500,shipFee:250};
+window.SHOP={whatsapp:'923009663779',freeShip:2500,shipFee:250};
