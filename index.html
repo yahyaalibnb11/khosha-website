@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#A0472D">
+<link rel="icon" href="assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./js/vendor/three.module.min.js","three/addons/":"./js/vendor/addons/"}}</script>
+<script src="js/data.js"></script><script src="js/cart.js"></script><script src="js/site.js" defer></script>
+
+<title>Khosha Desi Grains</title>
+<meta name="description" content="Khosha by Desired Mill, Faisalabad. Desi atta, single-origin masalay, seeds aur wellness foods, purane tareeqay se pise hue.">
+</head><body class="grain-bg" data-page="home">
+<div class="loader" id="loader"><b>KHOSHA</b><div class="bar"><i></i></div><div class="ur">ہر روٹی ایک خوشے سے شروع ہوتی ہے</div></div>
+<div id="nav"></div>
+<section class="hero" id="hero">
+  <div class="hero-word">KHOSHA</div>
+  <div class="hero-arch"></div>
+  <svg class="ring" viewBox="0 0 1000 1000"><defs><path id="cr" d="M500,500 m-430,0 a430,430 0 1,1 860,0 a430,430 0 1,1 -860,0"/></defs>
+    <g style="transform-origin:500px 500px;animation:spin 60s linear infinite"><text><textPath href="#cr" textLength="2690" lengthAdjust="spacing">Desi grains ✦ Milled the old way ✦ Faisalabad ✦ Single origin masala ✦ Since generations ✦ </textPath></text></g></svg>
+  <canvas id="stage" aria-label="Khosha products, drag to explore"></canvas>
+  <div class="hero-title"><div class="wrap"><div><h1 class="split">Desi anaaj, <em class="it">chakki</em> ka sach.</h1><p data-r>Faisalabad ki apni mill se, khet ki khushbu ke saath. Ghuma kar dekhein, pouch ko pakar kar palat dein.</p></div>
+  <div class="side" data-r><div class="ur">خوشہ</div>Gandum ki baali. Har roti yahin se shuru hoti hai.</div></div></div>
+  <div class="hint"><span class="dot"></span>Drag to explore · Pouch ko ghuma kar palat dein</div>
+  <div class="hero-ui"><div class="wrap">
+    <div class="pinfo swap" id="pinfo"><div class="cat" id="pcat">DESI ATTA</div><h2 id="pname">Multigrain Atta</h2><div class="ur" id="pur"></div>
+      <div class="row"><span class="price" id="pprice"></span><span class="wt" id="pwt"></span></div>
+      <div class="row" style="margin-top:18px"><a class="btn t" id="padd" data-add="multigrain-atta"><span>Add to cart</span></a><a class="btn ghost" id="plink" href="#"><span>Details</span></a></div></div>
+    <div class="hero-ctrl"><button class="circ" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="counter" id="cnt">01 / 10</div>
+      <button class="circ" id="flip" aria-label="Flip pouch" title="Peeche dekhein"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></button>
+      <button class="circ" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></button></div>
+  </div></div>
+</section>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+
+<div class="marquee"><div class="track"><span>Dheemi pisai</span><span>Single-origin haldi</span><span>No added colour</span><span>Faisalabad ki mill</span><span>Cash on delivery</span><span>Small batches</span><span>Dheemi pisai</span><span>Single-origin haldi</span><span>No added colour</span><span>Faisalabad ki mill</span><span>Cash on delivery</span><span>Small batches</span></div></div>
+
+<section class="pad"><div class="wrap intro">
+  <div><div class="eyebrow" data-r>Hamari kahani</div>
+  <h2 class="h-l split" style="margin-top:22px">Khandani grain trade se, <em class="it">aap ke dastarkhwan</em> tak.</h2>
+  <p class="lead" data-r>Hum mandi mein peedhiyon se anaaj parakhte aaye hain. Khosha usi tajurbe ko aap ke ghar laata hai: chuna hua desi anaaj, dheemi pisai, aur woh khushbu jo factory ke packet mein nahi milti.</p>
+  <div class="stats" data-r><div><b>20</b><small>Desi products</small></div><div><b>3</b><small>Origin masalay</small></div><div><b>1</b><small>Apni mill</small></div></div>
+  <a class="btn" href="story.html" style="margin-top:40px" data-r><span>Poori kahani</span></a></div>
+  <div class="intro-img" data-r><canvas id="introPouch" style="width:100%;height:100%;display:block"></canvas><span class="tag">MILLED AT DESIRED MILL · FAISALABAD</span></div>
+</div></section>
+
+<section class="pad" style="padding-top:0"><div class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap"><div><div class="eyebrow" data-r>Collection</div><h2 class="h-l split" style="margin-top:18px">Chhe <em class="it">khazane</em>, ek mill.</h2></div><a class="btn ghost" href="shop.html" data-r><span>Sab products</span></a></div>
+  <div class="cats" id="cats"></div>
+</div></section>
+
+<section class="pad process"><div class="wrap">
+  <div class="eyebrow" data-r>Khet se ghar tak</div>
+  <h2 class="h-l split" style="margin-top:18px;max-width:12em">Chaar qadam. <em class="it" style="color:#D9A21B">Koi shortcut nahi.</em></h2>
+  <div class="steps">
+   <div class="step" data-r><div class="num">01</div><h3>Chunai</h3><div class="ur">چنائی</div><p>Mandi aur khet se khud chuna hua anaaj. Origin masalay apne asal ilaqe se.</p></div>
+   <div class="step" data-r style="transition-delay:.1s"><div class="num">02</div><h3>Safai</h3><div class="ur">صفائی</div><p>Mitti, kankar aur toota daana alag. Har batch ka number aur record.</p></div>
+   <div class="step" data-r style="transition-delay:.2s"><div class="num">03</div><h3>Pisai</h3><div class="ur">پسائی</div><p>Dheemi pisai taake chokar aur khushbu baqi rahe. Garmi kam, zaiqa zyada.</p></div>
+   <div class="step" data-r style="transition-delay:.3s"><div class="num">04</div><h3>Ghar tak</h3><div class="ur">گھر تک</div><p>Zip-lock pouch mein band, seedha mill se aap ke darwaze tak. Cash on delivery.</p></div>
+  </div></div></section>
+
+<section class="pad"><div class="wrap">
+  <div class="eyebrow" data-r>Bundles</div><h2 class="h-l split" style="margin-top:18px">Mil kar <em class="it">sasta</em>, mil kar behtar.</h2>
+  <div class="bundles" id="bundles"></div>
+</div></section>
+
+<section class="pad" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow" data-r>Hamara wada</div><h2 class="h-l split" style="margin-top:18px">Jo likha hai, <em class="it">wohi</em> andar hai.</h2>
+  <div class="promise">
+   <div class="pr-card" data-r><div class="ic">✦</div><h3>Koi rang nahi</h3><p>Haldi mein peela rang, mirch mein laal rang. Hum kuch nahi milate.</p></div>
+   <div class="pr-card" data-r style="transition-delay:.08s"><div class="ic">№</div><h3>Batch number</h3><p>Har pouch par batch aur tareekh. Pata hai kab aur kahan pisa.</p></div>
+   <div class="pr-card" data-r style="transition-delay:.16s"><div class="ic">◐</div><h3>Asal origin</h3><p>Changa Manga ki haldi, Kunri ki mirch, Sukkur ka dhania.</p></div>
+   <div class="pr-card" data-r style="transition-delay:.24s"><div class="ic">↺</div><h3>Pasand na aaye?</h3><p>WhatsApp karein. Badal denge, sawal nahi poochenge.</p></div>
+  </div></div></section>
+
+<section class="pad" style="padding-top:0"><div class="wrap"><div class="cta" data-r>
+  <div class="ur">پہلا آرڈر، پہلی خوشبو</div><h2 class="split">Rs 2,500 se upar <em class="it" style="color:#D9A21B">free delivery</em></h2>
+  <a class="btn" href="shop.html"><span>Shop shuru karein</span></a></div></div></section>
+
+<section class="pad" id="faq" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow" data-r style="justify-content:center">Sawal jawab</div><h2 class="h-l split" style="text-align:center;margin-top:18px">Aap ne poocha</h2>
+  <div class="faq" data-r>
+   <details><summary>Delivery kahan tak hoti hai aur kitne din lagte hain?</summary><p>Faisalabad mein 1 se 2 din, Lahore aur Islamabad mein 2 se 3 din, baqi Pakistan mein 3 se 5 din. Rs 2,500 se upar ke order par delivery free hai.</p></details>
+   <details><summary>Payment kaise karein?</summary><p>Cash on delivery, JazzCash, Easypaisa ya bank transfer. Online payment par order jaldi dispatch hota hai.</p></details>
+   <details><summary>Multigrain roti sakht to nahi banti?</summary><p>Nahi, agar aata neem garam paani se gundh kar 20 minute rakha jaye. Har pack ke peeche tareeqa likha hai.</p></details>
+   <details><summary>Kya yeh diabetes ka ilaaj hai?</summary><p>Nahi. Khosha khana hai, dawa nahi. Hamare atta mein fibre wale desi anaaj hain. Apni diet ke baare mein apne doctor se mashwara karein.</p></details>
+   <details><summary>Atta kitne din chalta hai?</summary><p>Thandi, khushk jagah par zip band rakhein. Har pack par best-before tareekh likhi hai.</p></details>
+  </div></div></section>
+<div id="footer"></div>
+
+<script type="module">
+import {hero,viewer} from './js/pouch3d.js';
+const list=HERO_IDS.map(id=>PRODUCTS.find(p=>p.id===id));
+const L=document.getElementById('loader'),bar=L.querySelector('.bar i');let swapT;
+function show(p,i){const info=document.getElementById('pinfo');info.classList.add('out');clearTimeout(swapT);swapT=setTimeout(()=>{
+ pcat.textContent=CATS[p.cat].en;pname.textContent=p.en;pur.textContent=p.ur;pprice.textContent=fmt(p.price);pwt.textContent=p.wt;padd.dataset.add=p.id;plink.href='product.html#'+p.id;
+ cnt.textContent=String(i+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');info.classList.remove('out')},220)}
+const CN={atta:['Atta','آٹا','#A0472D'],masala:['Masalay','مسالے','#C08A12'],seeds:['Seeds','بیج','#2B2522'],grains:['Whole Grains','ثابت اناج','#7A7550'],rice:['Basmati','باسمتی','#9C7A4E'],wellness:['Wellness','صحت بخش','#4F5D3B']};
+cats.innerHTML=CAT_ORDER.map((c,i)=>{const ps=PRODUCTS.filter(p=>p.cat===c);return `<a class="cat-card" href="shop.html#${c}" data-r style="transition-delay:${i*.06}s"><div class="bg" style="background:radial-gradient(ellipse at 70% 30%,#ffffff22,transparent 60%),${CN[c][2]}"></div><span class="n">0${i+1} · ${ps.length} PRODUCTS</span>${ps[1]?`<img class="b2" src="${ps[1].front}" alt="">`:''}<img src="${ps[0].front}" alt="${ps[0].en}"><div class="ur">${CN[c][1]}</div><h3>${CN[c][0]}</h3><span class="go">→</span></a>`}).join('');
+bundles.innerHTML=BUNDLES.map((b,i)=>{const ps=b.items.map(id=>PRODUCTS.find(p=>p.id===id));const full=ps.reduce((a,p)=>a+p.price,0);return `<div class="bundle" data-r style="transition-delay:${i*.08}s">${i===0?'<span class="badge">BEST START</span>':''}<div class="imgs">${ps.map((p,k)=>`<img src="${p.front}" alt="" style="left:${12+k*(64/ps.length)}%;transform:rotate(${(k-(ps.length-1)/2)*7}deg);z-index:${k}">`).join('')}</div><div class="ur">${b.ur}</div><h3>${b.name}</h3><p>${b.note}</p><div class="foot"><span class="pr">${fmt(b.price)}<s>${fmt(full)}</s></span><a class="btn t" data-add="${b.id}"><span>Add</span></a></div></div>`}).join('');
+reveal();
+const fail=setTimeout(()=>L.classList.add('done'),9000);
+try{const api=await hero({canvas:document.getElementById('stage'),products:list,onActive:show,onProgress:v=>bar.style.width=(v*100)+'%',onOpen:p=>location.href='product.html#'+p.id});
+ prev.onclick=api.prev;next.onclick=api.next;flip.onclick=api.flip;}catch(e){console.error(e)}
+clearTimeout(fail);setTimeout(()=>L.classList.add('done'),250);
+const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();viewer({canvas:document.getElementById('introPouch'),p:PRODUCTS.find(p=>p.id==='changa-manga-haldi')})}});io.observe(document.getElementById('introPouch'));
+</script>
+</body></html>

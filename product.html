@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#A0472D">
+<link rel="icon" href="assets/img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./js/vendor/three.module.min.js","three/addons/":"./js/vendor/addons/"}}</script>
+<script src="js/data.js"></script><script src="js/cart.js"></script><script src="js/site.js" defer></script>
+
+<title>Khosha</title>
+</head><body class="grain-bg" data-page="shop" data-solid="1">
+<div id="nav"></div>
+<section><div class="wrap pd">
+ <div class="viewer" id="vw"><canvas id="pc"></canvas><div class="drag">↔ DRAG TO ROTATE</div>
+  <div class="tools"><button class="on" id="bf">Front</button><button id="bb">Back</button><button id="bs">360°</button></div></div>
+ <div class="pd-info" id="info"></div>
+</div></section>
+<section class="pad" style="padding-top:60px"><div class="wrap">
+ <div class="eyebrow" data-r>Saath mein lein</div><h2 class="h-m split" style="margin-top:14px">Yeh bhi <em class="it">pasand</em> aayega</h2>
+ <div class="grid" id="rel" style="margin-top:40px"></div></div></section>
+<div id="footer"></div>
+<script>
+const p=PRODUCTS.find(x=>x.id===(qs('id')||location.hash.slice(1)))||PRODUCTS[0];document.title=p.en+' | Khosha';
+vw.style.background=`radial-gradient(ellipse at 50% 40%,${lighten(p.color,.55)},${lighten(p.color,.25)})`;
+const light=(()=>{const n=parseInt(p.color.slice(1),16);return ((n>>16)*.299+((n>>8)&255)*.587+(n&255)*.114)>150})();
+let q=1;
+info.innerHTML=`<a href="shop.html#${p.cat}" class="eyebrow" style="margin-bottom:18px">${CATS[p.cat].en}</a><div class="ur">${p.ur}</div><h1 class="split">${p.en}</h1><div class="sub">${p.sub} · ${p.wt}</div>
+${p.origin?`<div class="origin-chip">◎ Origin: <b style="font-weight:600">${p.origin}</b></div>`:''}
+<p class="line">${p.line}</p>
+<div class="buy"><span class="price">${fmt(p.price)}</span><div class="qty"><button id="qm">−</button><span id="qv">1</span><button id="qp">+</button></div><a class="btn t" id="addb" data-add="${p.id}" data-qty="1"><span>Add to cart</span></a></div>
+<div class="acc"><details open><summary>Ingredients · اجزاء</summary><p>${p.ing}</p><div class="ur">${p.ingUr}</div></details>
+<details><summary>Istemal · استعمال</summary><p>${p.use}</p><div class="ur">${p.useUr}</div></details>
+<details><summary>Storage</summary><p>Thandi, khushk jagah par rakhein. Istemal ke baad zip achi tarah band karein.${p.allergen?' '+p.allergen:''}</p></details>
+<details><summary>Delivery</summary><p>Faisalabad 1-2 din, Lahore/Islamabad 2-3 din, baqi Pakistan 3-5 din. Rs ${SHOP.freeShip.toLocaleString()} se upar free delivery. Cash on delivery available.</p></details></div>`;
+qm.onclick=()=>{q=Math.max(1,q-1);qv.textContent=q;addb.dataset.qty=q};qp.onclick=()=>{q++;qv.textContent=q;addb.dataset.qty=q};
+const rel=PRODUCTS.filter(x=>x.cat===p.cat&&x.id!==p.id).concat(PRODUCTS.filter(x=>x.cat!==p.cat)).slice(0,4);
+document.getElementById('rel').innerHTML=rel.map(r=>`<div class="card" data-r><a class="ph" href="product.html#${r.id}" style="background:radial-gradient(ellipse at 50% 85%,#00000018,transparent 55%),${lighten(r.color,.72)}"><img class="fr" src="${r.front}" alt="${r.en}" loading="lazy"><img class="bk" src="${r.back}" alt="" loading="lazy"></a><div class="meta"><div><a href="product.html#${r.id}"><h3>${r.en}</h3></a><div class="ur">${r.ur}</div></div><div class="p">${fmt(r.price)}</div></div></div>`).join('');
+</script>
+<script type="module">
+import {viewer} from './js/pouch3d.js';
+const p=PRODUCTS.find(x=>x.id===(qs('id')||location.hash.slice(1)))||PRODUCTS[0];
+const api=await viewer({canvas:document.getElementById('pc'),p});
+const set=b=>[bf,bb,bs].forEach(x=>x.classList.toggle('on',x===b));
+bf.onclick=()=>{api.front();set(bf)};bb.onclick=()=>{api.back();set(bb)};bs.onclick=()=>{api.spin();set(bs)};
+</script>
+<script>addEventListener('hashchange',()=>location.reload())</script>
+</body></html>

@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head>@@HEAD@@
+<title>Shop | Khosha</title><meta name="description" content="Khosha ke tamam desi atta, masalay, seeds, grains, basmati aur wellness products.">
+</head><body class="grain-bg" data-page="shop" data-solid="1">
+<div id="nav"></div>
+<section class="page-head"><div class="wrap">
+ <div class="eyebrow" data-r>Shop · 20 products</div>
+ <h1 class="h-xl split" style="margin-top:20px">Poora <em class="it">khazana</em></h1>
+ <div class="ur" data-r>دیسی اناج، خالص مسالے</div>
+ <div class="filters" id="filters"></div>
+ <div id="sections"></div>
+</div></section>
+<section class="pad" style="padding-top:40px"><div class="wrap"><div class="cta" data-r><div class="ur">بنڈل میں بچت</div><h2>Bundles par <em class="it" style="color:#D9A21B">Rs 400 tak</em> bachat</h2><a class="btn" href="index.html#bundles"><span>Bundles dekhein</span></a></div></div></section>
+<div id="footer"></div>
+<script>
+const CNM={atta:['Atta','آٹا'],masala:['Masalay','مسالے'],seeds:['Seeds','بیج'],grains:['Whole Grains','ثابت اناج'],rice:['Basmati','باسمتی'],wellness:['Wellness','صحت بخش']};
+filters.innerHTML=`<button class="chip on" data-f="all">Sab</button>`+CAT_ORDER.map(c=>`<button class="chip" data-f="${c}">${CNM[c][0]}</button>`).join('');
+const card=p=>`<div class="card" data-r><a class="ph" href="product.html#${p.id}" style="background:radial-gradient(ellipse at 50% 85%,#00000018,transparent 55%),${lighten(p.color,.72)}"><img class="fr" src="${p.front}" alt="${p.en}" loading="lazy"><img class="bk" src="${p.back}" alt="" loading="lazy"><div class="qa"><span class="btn t" data-add="${p.id}"><span>Add · ${fmt(p.price)}</span></span></div></a>
+<div class="meta"><div><a href="product.html#${p.id}"><h3>${p.en}</h3></a><div class="ur">${p.ur}</div></div><div style="text-align:right"><div class="p">${fmt(p.price)}</div><small>${p.wt}</small></div></div></div>`;
+sections.innerHTML=CAT_ORDER.map(c=>`<div class="sec" id="${c}" data-cat="${c}" style="padding-top:60px"><div style="display:flex;align-items:baseline;gap:18px;border-bottom:1px solid var(--line);padding-bottom:16px"><h2 class="h-m">${CNM[c][0]}</h2><span class="ur" style="font-size:24px;color:var(--t)">${CNM[c][1]}</span><span style="margin-left:auto;font-size:12px;letter-spacing:.2em;color:var(--b2)">${PRODUCTS.filter(p=>p.cat===c).length} ITEMS</span></div><div class="grid">${PRODUCTS.filter(p=>p.cat===c).map(card).join('')}</div></div>`).join('');
+filters.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;filters.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;document.querySelectorAll('.sec').forEach(s=>s.style.display=(f==='all'||s.dataset.cat===f)?'':'none');reveal()};
+if(location.hash){const f=location.hash.slice(1);const b=filters.querySelector(`[data-f="${f}"]`);if(b)setTimeout(()=>b.click(),50)}
+</script>
+</body></html>

@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head>@@HEAD@@
+<title>Order | Khosha</title>
+</head><body class="grain-bg" data-page="order" data-solid="1">
+<div id="nav"></div>
+<section class="page-head" style="padding-bottom:30px"><div class="wrap"><div class="eyebrow" data-r>Aap ka order</div><h1 class="h-l split" style="margin-top:18px">Cart <em class="it">&</em> Checkout</h1></div></section>
+<section><div class="wrap order">
+ <div><div id="items"></div>
+  <div style="margin-top:40px"><div class="eyebrow">Bundle add karein</div><div id="ups" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px"></div></div></div>
+ <aside class="summary">
+  <div class="eyebrow">Summary</div>
+  <div class="r" style="margin-top:14px"><span>Subtotal</span><span id="sub">Rs 0</span></div>
+  <div class="r"><span>Delivery</span><span id="ship"></span></div>
+  <div class="ship-bar"><i id="sbar"></i></div><small id="shipmsg" style="font-size:12px;color:var(--b2)"></small>
+  <div class="r tot"><span>Total</span><span id="tot">Rs 0</span></div>
+  <form class="form" id="f">
+   <input name="name" placeholder="Poora naam" required autocomplete="name">
+   <input name="phone" placeholder="Mobile number (03xx xxxxxxx)" required inputmode="tel" autocomplete="tel">
+   <select name="city" required><option value="">Shehar chunein</option><option>Faisalabad</option><option>Lahore</option><option>Islamabad</option><option>Rawalpindi</option><option>Karachi</option><option>Multan</option><option>Gujranwala</option><option>Sialkot</option><option>Peshawar</option><option>Doosra shehar</option></select>
+   <textarea name="address" placeholder="Ghar ka poora pata" required autocomplete="street-address"></textarea>
+   <div class="pay"><label><input type="radio" name="pay" value="Cash on Delivery" checked> Cash on delivery</label><label><input type="radio" name="pay" value="JazzCash / Easypaisa"> JazzCash / Easypaisa</label></div>
+   <button class="btn t" style="width:100%;margin-top:6px" type="submit"><span>WhatsApp par order bhejein</span></button>
+   <small style="font-size:12px;color:var(--b2);text-align:center">Order WhatsApp par confirm hoga. Koi advance zaroori nahi.</small>
+  </form>
+ </aside>
+</div></section>
+<div id="footer"></div>
+<script>
+function draw(){const c=Cart.items();
+ items.innerHTML=c.length?c.map(it=>{const p=Cart.byId(it.id);if(!p)return'';const isB=!p.en;const img=isB?PRODUCTS.find(x=>x.id===p.items[0]).front:p.front;const col=isB?'#A0472D':p.color;
+  return `<div class="citem"><a class="th" href="${isB?'index.html':'product.html#'+p.id}" style="background:${lighten(col,.7)}"><img src="${img}" alt=""></a><div><h3>${isB?p.name:p.en}</h3><small>${isB?'BUNDLE · '+p.items.length+' ITEMS':p.wt+' · '+fmt(p.price)}</small><div style="display:flex;align-items:center"><div class="qty"><button data-m="${it.id}">−</button><span>${it.q}</span><button data-p="${it.id}">+</button></div><button class="rm" data-x="${it.id}">REMOVE</button></div></div><div class="p" style="font-family:var(--serif);font-size:24px">${fmt(p.price*it.q)}</div></div>`}).join(''):`<div class="empty"><p class="ur" style="font-size:30px;color:var(--t)">آپ کا کارٹ خالی ہے</p><p>Cart abhi khaali hai.</p><a class="btn" href="shop.html" style="margin-top:24px"><span>Shop karein</span></a></div>`;
+ const s=Cart.subtotal(),free=s>=SHOP.freeShip||s===0,sh=free?0:SHOP.shipFee;
+ sub.textContent=fmt(s);ship.textContent=s===0?'—':(free?'FREE':fmt(sh));tot.textContent=fmt(s+sh);
+ sbar.style.width=Math.min(100,s/SHOP.freeShip*100)+'%';shipmsg.textContent=s>=SHOP.freeShip?'Mubarak ho, delivery free hai.':(s?`Free delivery ke liye ${fmt(SHOP.freeShip-s)} aur.`:'');}
+ups.innerHTML=BUNDLES.map(b=>`<button data-add="${b.id}" style="text-align:left;border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--c)"><div style="font-family:var(--serif);font-size:21px">${b.name}</div><small style="color:var(--b2)">${fmt(b.price)} · + Add</small></button>`).join('');
+items.onclick=e=>{const t=e.target;const c=Cart.items();const g=id=>(c.find(x=>x.id===id)||{q:0}).q;if(t.dataset.m)Cart.set(t.dataset.m,g(t.dataset.m)-1);if(t.dataset.p)Cart.set(t.dataset.p,g(t.dataset.p)+1);if(t.dataset.x)Cart.set(t.dataset.x,0)};
+document.addEventListener('cart:change',draw);draw();
+f.onsubmit=e=>{e.preventDefault();const c=Cart.items();if(!c.length){alert('Cart khaali hai');return}const d=Object.fromEntries(new FormData(f));const s=Cart.subtotal(),sh=s>=SHOP.freeShip?0:SHOP.shipFee;
+ const lines=c.map(it=>{const p=Cart.byId(it.id);return `• ${p.en||p.name}${p.wt?' ('+p.wt+')':''} x${it.q} = ${fmt(p.price*it.q)}`}).join('\n');
+ const msg=`Assalam o Alaikum KHOSHA!\nMain yeh order karna chahta/chahti hoon:\n\n${lines}\n\nSubtotal: ${fmt(s)}\nDelivery: ${sh?fmt(sh):'FREE'}\nTotal: ${fmt(s+sh)}\n\nNaam: ${d.name}\nPhone: ${d.phone}\nShehar: ${d.city}\nPata: ${d.address}\nPayment: ${d.pay}`;
+ window.open('https://wa.me/'+SHOP.whatsapp+'?text='+encodeURIComponent(msg),'_blank');};
+</script>
+</body></html>
